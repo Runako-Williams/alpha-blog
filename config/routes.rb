@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create'
 
   resources :articles
-  resources :users
+  resources :users, except: [:new]
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
 end
